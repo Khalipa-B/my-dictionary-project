@@ -6,7 +6,7 @@ function Dictionary() {
   const [searchTerm, setSearchTerm] = useState("");
 
   function handleResponse(response) {
-    console.log(response.data);
+    //documentation: https://dictionaryapi.dev/
     alert(`Word: ${response.data[0].word}`);
     alert(
       `Definition: ${response.data[0].meanings[0].definitions[0].definition}`
