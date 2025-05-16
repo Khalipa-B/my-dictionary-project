@@ -8,17 +8,26 @@
   width: 300px;
   font-size: 16px;
   margin-right: 10px;
+  display: inline-block;
 }
 
 .search-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: #121212;
   color: white;
   border: none;
   cursor: pointer;
+  display: inline-block;
 }
 
 .search-button:hover {
   background-color: #0056b3;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
