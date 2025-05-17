@@ -13,7 +13,26 @@ export default function App() {
           <Dictionary defaultKeyword="umbrella" />
         </main>
         <footer className="App-footer">
-          <small>Coded by Khalipa Baba</small>
+          <small>
+            This project was coded by Khalipa Baba and is open-sourced on{" "}
+            <a
+              href="https://github.com/Khalipa-B/my-dictionary-project"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              Github
+            </a>{" "}
+            and is hosted on{" "}
+            <a
+              href="https://khalipa-dictionary-project.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              Netlify.
+            </a>
+          </small>
         </footer>
       </div>
     </div>
