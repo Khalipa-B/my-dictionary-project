@@ -1,0 +1,22 @@
+.Synonyms {
+  margin: 15px 0 0;
+  padding: 0;
+}
+
+.Synonyms li {
+  font-size: 13px;
+  display: inline-block;
+  padding-right: 10px;
+  line-height: 1;
+}
+
+.Synonyms li a {
+  text-decoration: none;
+  color: #ff9800;
+  font-weight: bold;
+  transition: all 150ms ease-in-out;
+}
+
+.Synonyms li a:hover {
+  color: #333;
+}
