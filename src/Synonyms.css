@@ -1,7 +1,8 @@
 .Synonyms {
   margin: 15px 0 0;
   padding: 0;
-  list-style: none; /* Reset list styles */
+  list-style: none;
+  color: white;
 }
 
 .Synonyms li {
@@ -9,6 +10,7 @@
   display: inline-block;
   padding-right: 10px;
   line-height: 1;
+  color: white;
 }
 
 .Synonyms li a {
@@ -16,8 +18,4 @@
   color: #ff9800;
   font-weight: bold;
   transition: all 150ms ease-in-out;
-}
-
-.Synonyms li a:hover {
-  color: #333;
 }
