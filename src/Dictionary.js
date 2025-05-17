@@ -3,52 +3,56 @@ import axios from "axios";
 import Results from "./Results";
 import "./Dictionary.css";
 
-export default function Dictionary() {
-  let [keyword, setKeyword] = useState("");
+export default function Dictionary(props) {
+  let [keyword, setKeyword] = useState(props.defaultKeyword);
   let [results, setResults] = useState(null);
+  let [loaded, setLoaded] = useState(false);
 
   function handleResponse(response) {
-    if (response.data && response.data.length > 0) {
-      console.log(response.data[0]);
-      setResults(response.data[0]);
-    } else {
-      console.error("No results found.");
-      setResults(null);
-    }
+    setResults(response.data[0]);
   }
 
-  function search(event) {
+  function search() {
+    // documentation: https://dictionaryapi.dev/e
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
     event.preventDefault();
-    if (keyword.trim() === "") {
-      alert("Please enter a word to search.");
-      return;
-    }
-    // API documentation: https://dictionaryapi.dev/
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
-    axios
-      .get(apiUrl)
-      .then(handleResponse)
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        alert("Sorry, we couldn't find the word. Please try again.");
-      });
+    search();
   }
 
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
   }
 
-  return (
-    <div className="Dictionary">
-      <form onSubmit={search}>
-        <input
-          type="search"
-          placeholder="Search for a word"
-          onChange={handleKeywordChange}
-        />
-        <button type="submit">Search</button>
-      </form>
-      {results && <Results results={results} />}
-    </div>
-  );
+  function load() {
+    setLoaded(true);
+    search();
+  }
+
+  if (loaded) {
+    return (
+      <div className="Dictionary">
+        <section>
+          <h1>What word do you want to look up?</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="search"
+              onChange={handleKeywordChange}
+              defaultValue={props.defaultKeyword}
+            />
+          </form>
+          <div className="hint">
+            suggested words: sunset, wine, yoga, plant...
+          </div>
+        </section>
+        <Results results={results} />
+      </div>
+    );
+  } else {
+    load();
+    return "Loading";
+  }
 }
